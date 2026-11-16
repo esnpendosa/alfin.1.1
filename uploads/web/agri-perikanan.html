@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AgriPerikanan AgroVoice AI - informasi, edukasi, dan inovasi teknologi perikanan Indonesia.">
+  <title>AgriPerikanan | AgroVoice AI</title>
+  <style>
+    :root {
+      --navy: #062b43;
+      --blue: #087eaa;
+      --cyan: #25bfd0;
+      --pale: #eaf8fa;
+      --ink: #163747;
+      --muted: #607985;
+      --white: #fff;
+      --shadow: 0 14px 40px rgba(5, 54, 78, .12);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink); background: #f7fcfd; line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1120px, calc(100% - 40px)); margin: auto; }
+    header {
+      position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.94);
+      backdrop-filter: blur(12px); border-bottom: 1px solid #dceef1;
+    }
+    .nav { min-height: 74px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 850; color: var(--navy); font-size: 1.12rem; }
+    .brand-mark { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 13px; color: white; background: linear-gradient(135deg, var(--blue), var(--cyan)); font-size: 1.25rem; }
+    .brand small { display: block; font-size: .66rem; letter-spacing: .13em; color: var(--muted); font-weight: 700; }
+    nav { display: flex; align-items: center; gap: 25px; color: #42616f; font-size: .91rem; font-weight: 650; }
+    nav a:hover { color: var(--blue); }
+    .nav-cta { background: var(--navy); color: white; padding: 10px 17px; border-radius: 999px; }
+    .menu-btn { display: none; border: 0; background: transparent; font-size: 1.6rem; color: var(--navy); cursor: pointer; }
+    .hero {
+      overflow: hidden; position: relative; color: white;
+      background: linear-gradient(115deg, rgba(3,35,57,.96), rgba(4,104,139,.84)),
+        url('https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1900&q=85') center/cover;
+    }
+    .hero:after { content: ""; position: absolute; width: 520px; height: 520px; border: 1px solid rgba(255,255,255,.13); border-radius: 50%; right: -140px; bottom: -300px; box-shadow: 0 0 0 55px rgba(255,255,255,.035), 0 0 0 110px rgba(255,255,255,.025); }
+    .hero-inner { position: relative; z-index: 1; min-height: 570px; display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; gap: 50px; padding-top: 60px; padding-bottom: 70px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; color: #9cecf2; background: rgba(37,191,208,.13); border: 1px solid rgba(156,236,242,.28); padding: 7px 13px; border-radius: 999px; font-size: .78rem; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; }
+    h1 { font-size: clamp(2.6rem, 5vw, 4.5rem); line-height: 1.08; letter-spacing: -.045em; margin: 22px 0 20px; max-width: 680px; }
+    h1 span { color: #69e1e8; }
+    .hero p { color: #d6edf2; max-width: 580px; font-size: 1.06rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 30px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 13px 20px; border-radius: 999px; font-weight: 750; transition: .2s; }
+    .btn-primary { background: #43d0d8; color: #06364d; }
+    .btn-outline { border: 1px solid rgba(255,255,255,.55); color: white; }
+    .btn:hover { transform: translateY(-2px); }
+    .hero-visual { position: relative; }
+    .hero-visual img { width: 100%; height: 360px; object-fit: cover; border-radius: 28px; border: 5px solid rgba(255,255,255,.18); box-shadow: 0 25px 70px rgba(0,0,0,.28); }
+    .float-card { position: absolute; left: -25px; bottom: 25px; background: white; color: var(--ink); border-radius: 17px; padding: 15px 18px; box-shadow: var(--shadow); max-width: 220px; }
+    .float-card strong { display: block; color: var(--blue); font-size: 1.25rem; }
+    section { padding: 82px 0; }
+    .section-head { max-width: 680px; margin-bottom: 34px; }
+    .kicker { color: var(--blue); font-weight: 800; letter-spacing: .12em; text-transform: uppercase; font-size: .76rem; }
+    h2 { color: var(--navy); font-size: clamp(1.9rem, 3.5vw, 2.8rem); line-height: 1.15; letter-spacing: -.03em; margin: 10px 0 13px; }
+    .section-head p { color: var(--muted); }
+    .topics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .topic { padding: 25px; background: white; border: 1px solid #e0eff2; border-radius: 20px; box-shadow: 0 8px 24px rgba(5,54,78,.045); }
+    .topic-icon { width: 50px; height: 50px; display: grid; place-items: center; border-radius: 15px; background: var(--pale); font-size: 1.5rem; margin-bottom: 17px; }
+    .topic h3 { color: var(--navy); margin-bottom: 8px; font-size: 1.1rem; }
+    .topic p { color: var(--muted); font-size: .93rem; }
+    .news-section { background: var(--pale); }
+    .news-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 22px; }
+    .featured, .news-card { background: white; border-radius: 22px; overflow: hidden; box-shadow: 0 8px 26px rgba(5,54,78,.07); }
+    .featured img { width: 100%; height: 270px; object-fit: cover; display: block; }
+    .news-content { padding: 24px; }
+    .tag { color: var(--blue); font-size: .74rem; font-weight: 850; text-transform: uppercase; letter-spacing: .1em; }
+    .news-content h3 { color: var(--navy); font-size: 1.35rem; line-height: 1.3; margin: 9px 0; }
+    .news-content p { color: var(--muted); font-size: .93rem; }
+    .read-more { display: inline-block; color: var(--blue); font-weight: 800; margin-top: 14px; }
+    .side-news { display: grid; gap: 18px; }
+    .news-card { display: grid; grid-template-columns: 125px 1fr; min-height: 160px; }
+    .news-card img { width: 100%; height: 100%; object-fit: cover; }
+    .news-card .news-content { padding: 17px; }
+    .news-card h3 { font-size: 1.02rem; }
+    .news-card p { font-size: .86rem; }
+    .ai-band { color: white; background: linear-gradient(120deg, #06334d, #087eaa); border-radius: 28px; padding: 42px; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 30px; }
+    .ai-band h2 { color: white; margin-top: 0; }
+    .ai-band p { color: #d3edf2; max-width: 700px; }
+    .ai-icon { font-size: 4rem; }
+    .about-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 50px; align-items: center; }
+    .about-grid img { width: 100%; height: 340px; object-fit: cover; border-radius: 24px; }
+    .about-copy p { color: var(--muted); margin: 12px 0; }
+    .check { display: flex; gap: 10px; margin-top: 12px; color: var(--ink); font-weight: 650; }
+    .check span { color: #0a9bb2; }
+    footer { background: #05283d; color: #c5dce4; padding: 45px 0 25px; }
+    .footer-row { display: flex; justify-content: space-between; gap: 30px; flex-wrap: wrap; }
+    footer .brand { color: white; }
+    footer .brand small { color: #9cb8c5; }
+    footer p { max-width: 420px; margin-top: 13px; color: #a9c5d0; font-size: .9rem; }
+    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; align-items: center; font-size: .9rem; }
+    .copyright { border-top: 1px solid rgba(255,255,255,.13); margin-top: 30px; padding-top: 18px; color: #8eacb9; font-size: .82rem; }
+    @media (max-width: 800px) {
+      .menu-btn { display: block; }
+      nav { display: none; position: absolute; top: 74px; left: 0; right: 0; background: white; padding: 20px; flex-direction: column; align-items: stretch; border-bottom: 1px solid #dceef1; }
+      nav.open { display: flex; }
+      .hero-inner, .about-grid, .news-grid { grid-template-columns: 1fr; }
+      .hero-inner { gap: 35px; }
+      .hero-visual { max-width: 560px; }
+      .topics { grid-template-columns: 1fr 1fr; }
+      .ai-band { grid-template-columns: 1fr; }
+      .ai-icon { display: none; }
+    }
+    @media (max-width: 540px) {
+      .container { width: min(100% - 30px, 1120px); }
+      section { padding: 62px 0; }
+      .hero-inner { min-height: auto; padding-top: 65px; padding-bottom: 65px; }
+      .hero-visual img { height: 250px; }
+      .float-card { left: 10px; bottom: -20px; }
+      .topics { grid-template-columns: 1fr; }
+      .news-card { grid-template-columns: 105px 1fr; }
+      .news-card .news-content { padding: 13px; }
+      .news-card p { display: none; }
+      .ai-band { padding: 28px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#beranda">
+        <span class="brand-mark">🐟</span>
+        <span>AgroVoice AI<small>AGRI PERIKANAN</small></span>
+      </a>
+      <button class="menu-btn" aria-label="Buka menu" onclick="toggleMenu()">☰</button>
+      <nav id="navigation">
+        <a href="#beranda" onclick="closeMenu()">Beranda</a>
+        <a href="#informasi" onclick="closeMenu()">Informasi</a>
+        <a href="#berita" onclick="closeMenu()">Berita</a>
+        <a href="#ai" onclick="closeMenu()">AI Perikanan</a>
+        <a href="#tentang" onclick="closeMenu()">Tentang</a>
+        <a class="nav-cta" href="#berita" onclick="closeMenu()">Jelajahi</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="beranda">
+      <div class="container hero-inner">
+        <div>
+          <span class="eyebrow">🌊 Inovasi untuk laut dan perairan</span>
+          <h1>Membangun Masa Depan <span>Perikanan Indonesia.</span></h1>
+          <p>Temukan informasi, pengetahuan, dan perkembangan teknologi perikanan dalam satu platform. Bersama AgroVoice AI, dorong perikanan yang produktif, cerdas, dan berkelanjutan.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#informasi">Jelajahi Informasi</a>
+            <a class="btn btn-outline" href="#tentang">Tentang Kami</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <img src="https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=1100&q=85" alt="Kehidupan laut dan ikan di perairan">
+          <div class="float-card"><strong>Perikanan Cerdas</strong><span>Informasi dan inovasi untuk masa depan perairan.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="informasi">
+      <div class="container">
+        <div class="section-head">
+          <span class="kicker">Jelajahi pengetahuan</span>
+          <h2>Informasi Seputar Dunia Perikanan</h2>
+          <p>Kenali berbagai bidang perikanan, mulai dari budidaya hingga pengelolaan hasil laut.</p>
+        </div>
+        <div class="topics">
+          <article class="topic"><div class="topic-icon">🐠</div><h3>Budidaya Ikan</h3><p>Pelajari pemilihan benih, kualitas air, pemberian pakan, dan pengelolaan kolam budidaya.</p></article>
+          <article class="topic"><div class="topic-icon">🦐</div><h3>Budidaya Udang</h3><p>Kenali pengelolaan tambak, kesehatan udang, serta cara menjaga kualitas lingkungan perairan.</p></article>
+          <article class="topic"><div class="topic-icon">🌊</div><h3>Perikanan Laut</h3><p>Ikuti perkembangan penangkapan ikan yang bertanggung jawab dan menjaga ekosistem laut.</p></article>
+          <article class="topic"><div class="topic-icon">💧</div><h3>Kualitas Air</h3><p>Pahami parameter penting seperti suhu, pH, oksigen terlarut, dan kebersihan air.</p></article>
+          <article class="topic"><div class="topic-icon">🧊</div><h3>Pengolahan Hasil</h3><p>Pelajari penanganan pascapanen, penyimpanan, pengemasan, dan peningkatan nilai jual.</p></article>
+          <article class="topic"><div class="topic-icon">♻️</div><h3>Perikanan Berkelanjutan</h3><p>Dukung praktik perikanan yang menjaga sumber daya alam untuk generasi mendatang.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="news-section" id="berita">
+      <div class="container">
+        <div class="section-head">
+          <span class="kicker">Kabar dan wawasan</span>
+          <h2>Berita Perikanan</h2>
+          <p>Contoh konten berita untuk memperbarui wawasan pembaca mengenai teknologi dan kegiatan perikanan.</p>
+        </div>
+        <div class="news-grid">
+          <article class="featured">
+            <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=85" alt="Ekosistem laut">
+            <div class="news-content">
+              <span class="tag">Teknologi Perikanan</span>
+              <h3>Teknologi Digital Membantu Pembudidaya Memantau Kualitas Air</h3>
+              <p>Penggunaan sensor digital mulai dimanfaatkan untuk memantau kondisi air kolam secara lebih teratur. Informasi suhu, pH, dan oksigen terlarut dapat membantu pembudidaya mengambil keputusan lebih cepat dan menjaga kondisi ikan.</p>
+              <a class="read-more" href="#ai">Pelajari peran teknologi →</a>
+            </div>
+          </article>
+          <div class="side-news">
+            <article class="news-card">
+              <img src="https://images.unsplash.com/photo-1510130387422-82bed34b37e9?auto=format&fit=crop&w=500&q=80" alt="Nelayan menangkap ikan">
+              <div class="news-content"><span class="tag">Perikanan Laut</span><h3>Menjaga Ekosistem Laut Melalui Praktik Penangkapan Bertanggung Jawab</h3><p>Pengelolaan sumber daya laut perlu dilakukan secara bijak.</p></div>
+            </article>
+            <article class="news-card">
+              <img src="https://images.unsplash.com/photo-1534483509719-3feaee7c30da?auto=format&fit=crop&w=500&q=80" alt="Ikan segar hasil perikanan">
+              <div class="news-content"><span class="tag">Hasil Perikanan</span><h3>Penanganan Pascapanen Menentukan Mutu Hasil Ikan</h3><p>Penyimpanan yang tepat membantu menjaga kesegaran ikan.</p></div>
+            </article>
+            <article class="news-card">
+              <img src="https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=500&q=80" alt="Ikan di dalam air">
+              <div class="news-content"><span class="tag">Budidaya</span><h3>Pentingnya Memantau Kesehatan Ikan Secara Berkala</h3><p>Pengamatan rutin membantu mendeteksi masalah lebih awal.</p></div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ai">
+      <div class="container">
+        <div class="ai-band">
+          <div>
+            <span class="eyebrow">🤖 AgroVoice AI</span>
+            <h2>Teknologi AI untuk Mendukung Pelaku Perikanan</h2>
+            <p>AgroVoice AI menghadirkan akses informasi dan edukasi digital agar pembudidaya, nelayan, dan masyarakat dapat mengenal inovasi perikanan dengan lebih mudah.</p>
+            <div class="actions"><a class="btn btn-primary" href="#tentang">Kenali AgroVoice AI</a></div>
+          </div>
+          <div class="ai-icon">🐬</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tentang">
+      <div class="container about-grid">
+        <img src="https://images.unsplash.com/photo-1498623116890-37e912163d5d?auto=format&fit=crop&w=1100&q=85" alt="Pemandangan laut biru">
+        <div class="about-copy">
+          <span class="kicker">Tentang kami</span>
+          <h2>Mengenal AgriPerikanan</h2>
+          <p>AgriPerikanan merupakan bagian dari AgroVoice AI yang berfokus pada informasi, edukasi, dan perkembangan teknologi di sektor perikanan.</p>
+          <p>Kami ingin membantu masyarakat memperoleh wawasan yang mudah dipahami tentang budidaya, perikanan laut, pengolahan hasil, dan pelestarian lingkungan perairan.</p>
+          <div class="check"><span>✓</span> Informasi perikanan yang mudah dipahami</div>
+          <div class="check"><span>✓</span> Edukasi dan wawasan teknologi</div>
+          <div class="check"><span>✓</span> Dukungan terhadap perikanan berkelanjutan</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-row">
+        <div>
+          <a class="brand" href="#beranda"><span class="brand-mark">🐟</span><span>AgroVoice AI<small>AGRI PERIKANAN</small></span></a>
+          <p>Menghubungkan pengetahuan, teknologi, dan masa depan perikanan Indonesia.</p>
+        </div>
+        <div class="footer-links"><a href="#beranda">Beranda</a><a href="#informasi">Informasi</a><a href="#berita">Berita</a><a href="#tentang">Tentang</a></div>
+      </div>
+      <div class="copyright">© 2026 AgroVoice AI — AgriPerikanan. Dibuat untuk edukasi dan informasi.</div>
+    </div>
+  </footer>
+  <script>
+    function toggleMenu() {
+      document.getElementById('navigation').classList.toggle('open');
+    }
+    function closeMenu() {
+      document.getElementById('navigation').classList.remove('open');
+    }
+  </script>
+
+        <div style="text-align: center; margin: 50px 0; font-family: sans-serif;">
+            <a href="../../index.html" style="background-color: #2e5c36; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 16px; display: inline-block; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                &larr; Kembali ke Beranda AgroVoice
+            </a>
+        </div>
+        </body>
+</html>

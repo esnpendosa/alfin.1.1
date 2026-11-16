@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AgroPertanian - informasi, teknologi, dan inovasi pertanian modern Indonesia.">
+  <title>AgroPertanian | Pertanian Modern</title>
+  <style>
+    :root{--green:#286b3d;--dark:#173d28;--lime:#d9edbd;--cream:#fbfaf4;--text:#26352a;--muted:#68766c}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--cream);color:var(--text);line-height:1.65}
+    header{position:sticky;top:0;z-index:5;background:#fff;box-shadow:0 2px 14px #0000000c}
+    .nav{max-width:1120px;margin:auto;padding:15px 22px;display:flex;justify-content:space-between;align-items:center;gap:18px}
+    .brand{font-size:1.25rem;font-weight:800;color:var(--green)}.brand span{color:#d49a39}
+    nav{display:flex;gap:20px;flex-wrap:wrap}nav a{text-decoration:none;color:var(--text);font-weight:600;font-size:.94rem}nav a:hover{color:var(--green)}
+    .hero{padding:105px 22px;color:#fff;background:linear-gradient(100deg,#123c27ed,#286b3dc9),url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=85') center/cover}
+    .container{max-width:1120px;margin:auto}.hero .container{max-width:1120px}
+    .eyebrow{text-transform:uppercase;letter-spacing:2px;font-size:.78rem;font-weight:700;color:#e2f2d5}
+    h1{font-size:clamp(2.4rem,5vw,4.4rem);line-height:1.08;max-width:760px;margin:15px 0}
+    .hero p{max-width:650px;color:#edf6e9;font-size:1.08rem}
+    .btn{display:inline-block;margin-top:17px;padding:12px 21px;background:#e4b75f;color:#243629;text-decoration:none;border-radius:7px;font-weight:700}
+    section{padding:70px 22px}.head{max-width:690px;margin-bottom:30px}.head h2{font-size:clamp(1.8rem,3vw,2.5rem);color:var(--dark);margin:0 0 9px}.head p{color:var(--muted);margin:0}
+    .intro{display:grid;grid-template-columns:1.05fr .95fr;gap:38px;align-items:center}
+    .intro img{width:100%;height:330px;object-fit:cover;border-radius:16px}
+    .soft{background:#edf5e8}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 7px 24px #1c3a270d}
+    .feature{padding:25px}.emoji{font-size:2rem}.feature h3{color:var(--green);margin:10px 0 6px}.feature p,.article p{color:var(--muted);margin:0}
+    .article img{width:100%;height:190px;object-fit:cover;display:block}.content{padding:20px}
+    .tag{font-size:.77rem;text-transform:uppercase;letter-spacing:.8px;color:var(--green);font-weight:800}
+    .article h3{margin:8px 0;line-height:1.3}.article a{display:inline-block;margin-top:14px;color:var(--green);font-weight:700;text-decoration:none}
+    .banner{background:var(--dark);color:white;padding:36px;border-radius:17px;display:flex;align-items:center;justify-content:space-between;gap:24px}.banner h2{margin:0 0 7px}.banner p{margin:0;color:#dcebdd}
+    footer{background:#102d1d;color:#dce9df;text-align:center;padding:28px 20px}footer p{margin:4px}
+    @media(max-width:760px){.nav{align-items:flex-start;flex-direction:column}nav{gap:10px 16px}.hero{padding:75px 22px}.intro,.grid{grid-template-columns:1fr}.banner{align-items:flex-start;flex-direction:column}}
+  </style>
+</head>
+<body>
+<header><div class="nav">
+  <div class="brand">Agro<span>Pertanian</span></div>
+  <nav aria-label="Navigasi utama">
+    <a href="#beranda">Beranda</a><a href="#tentang">Tentang</a><a href="#inovasi">Inovasi</a><a href="#berita">Berita</a>
+  </nav>
+</div></header>
+<main>
+  <section class="hero" id="beranda"><div class="container">
+    <div class="eyebrow">AgriVoice AI • Wawasan Pertanian</div>
+    <h1>Inovasi Pertanian untuk Masa Depan yang Lebih Hijau</h1>
+    <p>Jelajahi perkembangan pertanian Indonesia, dari budidaya tanaman dan pengelolaan lahan hingga teknologi digital yang membantu petani meningkatkan hasil panen secara berkelanjutan.</p>
+    <a class="btn" href="#berita">Jelajahi Informasi</a>
+  </div></section>
+
+  <section id="tentang"><div class="container intro">
+    <div><div class="head"><h2>Mengenal AgroPertanian</h2>
+      <p>Pertanian merupakan salah satu sektor penting dalam kehidupan masyarakat. Selain menyediakan bahan pangan, pertanian juga membuka lapangan pekerjaan dan mendukung perekonomian.</p></div>
+      <p>AgroPertanian menghadirkan informasi seputar teknik budidaya, pemanfaatan teknologi, pengelolaan sumber daya alam, serta inovasi untuk membantu pertanian menjadi lebih produktif dan ramah lingkungan.</p>
+    </div>
+    <img src="https://images.unsplash.com/photo-1499529112087-3cb3b73058e8?auto=format&fit=crop&w=1000&q=85" alt="Lahan pertanian hijau dengan tanaman yang tumbuh subur">
+  </div></section>
+
+  <section class="soft" id="inovasi"><div class="container">
+    <div class="head"><h2>Fokus Pertanian</h2><p>Pengetahuan dan inovasi yang dapat mendukung kegiatan pertanian dari persiapan lahan hingga panen.</p></div>
+    <div class="grid">
+      <article class="card feature"><div class="emoji" aria-hidden="true">🌱</div><h3>Budidaya Tanaman</h3><p>Memahami pemilihan benih, pengolahan tanah, pemupukan, dan perawatan tanaman sesuai kebutuhan komoditas.</p></article>
+      <article class="card feature"><div class="emoji" aria-hidden="true">🚜</div><h3>Mekanisasi Pertanian</h3><p>Pemanfaatan alat dan mesin pertanian membantu pekerjaan lebih efisien, menghemat tenaga, dan mendukung ketepatan waktu tanam.</p></article>
+      <article class="card feature"><div class="emoji" aria-hidden="true">📡</div><h3>Pertanian Digital</h3><p>Sensor, prakiraan cuaca, citra lahan, dan pencatatan digital membantu petani mengambil keputusan berdasarkan data.</p></article>
+    </div>
+  </div></section>
+
+  <section id="berita"><div class="container">
+    <div class="head"><h2>Berita dan Wawasan</h2><p>Contoh artikel seputar perkembangan dan praktik pertanian modern.</p></div>
+    <div class="grid">
+      <article class="card article"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=85" alt="Hamparan lahan pertanian"><div class="content"><div class="tag">Teknologi</div><h3>Petani Mulai Memanfaatkan Teknologi Digital</h3><p>Informasi cuaca, pencatatan hasil panen, dan pemantauan lahan secara digital dapat membantu petani merencanakan kegiatan pertanian.</p><a href="#kontak">Baca selengkapnya →</a></div></article>
+      <article class="card article"><img src="https://images.unsplash.com/photo-1592982537447-6f2a6a0b6f4b?auto=format&fit=crop&w=900&q=85" alt="Tanaman sayuran di lahan pertanian"><div class="content"><div class="tag">Budidaya</div><h3>Perawatan Tanaman Menentukan Kualitas Panen</h3><p>Pemilihan benih, pengairan, pemupukan, dan pengendalian hama perlu dilakukan secara tepat agar tanaman tumbuh optimal.</p><a href="#kontak">Baca selengkapnya →</a></div></article>
+      <article class="card article"><img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=900&q=85" alt="Hasil panen sayuran segar"><div class="content"><div class="tag">Keberlanjutan</div><h3>Pertanian Ramah Lingkungan Semakin Diperhatikan</h3><p>Penggunaan air secara bijak, pengelolaan tanah, dan pemanfaatan pupuk organik menjadi langkah untuk menjaga sumber daya alam.</p><a href="#kontak">Baca selengkapnya →</a></div></article>
+    </div>
+  </div></section>
+
+  <section id="kontak"><div class="container"><div class="banner">
+    <div><h2>Petani Cerdas, Pertanian Berkualitas</h2><p>Terus belajar dan manfaatkan inovasi untuk membangun pertanian Indonesia yang maju dan berkelanjutan.</p></div>
+    <a class="btn" href="#beranda">Kembali ke Atas</a>
+  </div></div></section>
+</main>
+<footer><p><strong>AgroPertanian</strong> — Bagian dari AgriVoice AI</p><p>Informasi dan inovasi untuk pertanian Indonesia.</p></footer>
+
+<!-- Tombol dari AgroVoice -->
+<a data-agrovoice-beranda href="../../index.html" style="position:fixed;bottom:20px;left:20px;z-index:2147483647;display:inline-block;padding:11px 18px;background:#2e5c36;color:#fff;font:600 14px/1 system-ui,-apple-system,'Segoe UI',sans-serif;text-decoration:none;border-radius:999px;box-shadow:0 4px 14px rgba(0,0,0,.28);">&larr; Kembali ke beranda</a>
+</body>
+</html>

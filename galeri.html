@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri - AgroVoice</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">AgroVoice</a>
+            <div class="nav-links">
+                <a href="index.html">Beranda</a>
+                <a href="berita.html">Berita</a>
+                <a href="galeri.html" style="color: var(--agro-green); opacity: 1;">Galeri</a>
+                <div class="nav-dropdown">
+                    <select aria-label="Pilih agro" onchange="if(this.value) window.location.href=this.value">
+                        <option value="index.html">AgroVoice</option>
+                        <option value="uploads/web/agri-perikanan.html">AgriPerikanan</option>
+                        <option value="uploads/web/1794879347_agropertanian.html">AgroPertanian</option>
+                        <option value="uploads/web/1794879300_agropeternakan.html">AgroPeternakan</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HEADER -->
+    <header style="padding: 120px 20px 40px; text-align: center; background: var(--apple-bg);">
+        <h1 style="font-size: clamp(32px, 5vw, 48px); font-weight: 800; letter-spacing: -1px;">Galeri <span style="color: var(--agro-green);">AgroVoice.</span></h1>
+        <p style="color: var(--text-muted); margin-top: 10px;">Dokumentasi foto dan video dari lapangan.</p>
+    </header>
+
+    <!-- GRID GALERI -->
+    <section class="section-apple white" style="padding-top: 20px; min-height: 450px;">
+        <div class="grid-apple" id="daftar-galeri">
+            <p style="text-align:center; width:100%;">Memuat galeri...</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 AgroVoice AI. Desain terinspirasi dari Apple.</p>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script>
+        const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+        
+        function muatGaleri() {
+            try {
+                const data = (window.AGRO_DATA && window.AGRO_DATA.galeri) ? window.AGRO_DATA.galeri : [];
+                const container = document.getElementById('daftar-galeri');
+                container.innerHTML = '';
+                
+                if (data.length === 0) {
+                    container.innerHTML = '<p style="text-align:center; width:100%; color: var(--text-muted); padding: 40px 0;">Belum ada foto atau video di galeri.</p>';
+                    return;
+                }
+
+                data.forEach(item => {
+                    let media = '';
+                    if (item.tipe === 'foto') {
+                        media = `<img src="${esc(item.url_file)}" alt="${esc(item.judul)}" loading="lazy" style="height:220px; object-fit:cover; width:100%; border-radius:12px;">`;
+                    } else {
+                        media = `<video src="${esc(item.url_file)}" controls style="height:220px; object-fit:cover; width:100%; border-radius:12px;"></video>`;
+                    }
+
+                    container.innerHTML += `
+                        <div class="card-apple" style="padding:15px;">
+                            ${media}
+                            <h4 style="text-align:center; margin-top:12px; font-size:15px;">${esc(item.judul || 'Tanpa Judul')}</h4>
+                        </div>
+                    `;
+                });
+            } catch (error) {
+                console.error("Gagal memuat galeri:", error);
+            }
+        }
+        document.addEventListener('DOMContentLoaded', muatGaleri);
+    </script>
+</body>
+</html>

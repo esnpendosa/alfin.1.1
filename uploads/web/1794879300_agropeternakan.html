@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AgroPeternakan - informasi, teknologi, dan inovasi peternakan modern.">
+  <title>AgroPeternakan | Peternakan Modern</title>
+  <style>
+    :root {
+      --green: #1f6b45;
+      --green-dark: #123d2b;
+      --green-light: #eaf5ed;
+      --cream: #fbfaf5;
+      --text: #24332a;
+      --muted: #64736a;
+      --white: #fff;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.6;
+    }
+    header {
+      background: rgba(255,255,255,.96);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 14px rgba(0,0,0,.06);
+    }
+    .nav {
+      max-width: 1120px;
+      margin: auto;
+      padding: 15px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .brand { font-weight: 800; font-size: 1.25rem; color: var(--green); }
+    .brand span { color: #d18b35; }
+    nav { display: flex; gap: 22px; flex-wrap: wrap; }
+    nav a { text-decoration: none; color: var(--text); font-weight: 600; font-size: .94rem; }
+    nav a:hover { color: var(--green); }
+    .hero {
+      background: linear-gradient(110deg, rgba(13,53,35,.92), rgba(31,107,69,.78)),
+        url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=85') center/cover;
+      color: white;
+      padding: 100px 22px;
+    }
+    .hero-inner { max-width: 1120px; margin: auto; }
+    .eyebrow { text-transform: uppercase; letter-spacing: 2px; font-size: .78rem; font-weight: 700; color: #d7efdc; }
+    h1 { max-width: 720px; font-size: clamp(2.3rem, 5vw, 4.3rem); line-height: 1.08; margin: 15px 0; }
+    .hero p { max-width: 620px; color: #edf7ef; font-size: 1.08rem; }
+    .btn {
+      display: inline-block; margin-top: 18px; padding: 12px 21px;
+      background: #e9b65c; color: #253629; text-decoration: none;
+      border-radius: 7px; font-weight: 700;
+    }
+    section { padding: 70px 22px; }
+    .container { max-width: 1120px; margin: auto; }
+    .section-head { max-width: 680px; margin-bottom: 30px; }
+    .section-head h2 { color: var(--green-dark); font-size: clamp(1.8rem, 3vw, 2.5rem); margin: 0 0 10px; }
+    .section-head p { color: var(--muted); margin: 0; }
+    .intro-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 38px; align-items: center; }
+    .intro-image { width: 100%; min-height: 310px; object-fit: cover; border-radius: 16px; }
+    .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .feature, .news-card {
+      background: white; border-radius: 14px; overflow: hidden;
+      box-shadow: 0 7px 24px rgba(28,58,39,.07);
+    }
+    .feature { padding: 25px; }
+    .feature .emoji { font-size: 2rem; }
+    .feature h3 { color: var(--green); margin: 12px 0 7px; }
+    .feature p, .news-card p { color: var(--muted); margin-bottom: 0; }
+    .soft { background: var(--green-light); }
+    .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .news-card img { width: 100%; height: 190px; object-fit: cover; display: block; }
+    .news-content { padding: 20px; }
+    .tag { color: var(--green); font-size: .78rem; font-weight: 800; text-transform: uppercase; letter-spacing: .7px; }
+    .news-card h3 { margin: 8px 0; line-height: 1.3; }
+    .news-card a { display: inline-block; margin-top: 15px; color: var(--green); font-weight: 700; text-decoration: none; }
+    .callout {
+      background: var(--green-dark); color: white; border-radius: 18px;
+      padding: 38px; display: flex; justify-content: space-between; align-items: center; gap: 25px;
+    }
+    .callout h2 { margin: 0 0 8px; }
+    .callout p { margin: 0; color: #dcebe0; }
+    footer { background: #102f22; color: #dce9df; padding: 28px 22px; text-align: center; }
+    footer p { margin: 4px; }
+    @media (max-width: 760px) {
+      .nav { align-items: flex-start; flex-direction: column; }
+      nav { gap: 12px 17px; }
+      .hero { padding: 75px 22px; }
+      .intro-grid, .features, .news-grid { grid-template-columns: 1fr; }
+      .callout { align-items: flex-start; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="brand">Agro<span>Peternakan</span></div>
+      <nav aria-label="Navigasi utama">
+        <a href="#beranda">Beranda</a>
+        <a href="#tentang">Tentang</a>
+        <a href="#inovasi">Inovasi</a>
+        <a href="#berita">Berita</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="beranda">
+      <div class="hero-inner">
+        <div class="eyebrow">AgriVoice AI • Wawasan Peternakan</div>
+        <h1>Membangun Peternakan Modern dan Berkelanjutan</h1>
+        <p>Kenali perkembangan dunia peternakan, mulai dari perawatan hewan, pengelolaan pakan, hingga pemanfaatan teknologi untuk meningkatkan produktivitas dan kesejahteraan ternak.</p>
+        <a class="btn" href="#berita">Jelajahi Informasi</a>
+      </div>
+    </section>
+
+    <section id="tentang">
+      <div class="container intro-grid">
+        <div>
+          <div class="section-head">
+            <h2>Mengenal AgroPeternakan</h2>
+            <p>Peternakan memiliki peran penting dalam menyediakan sumber pangan seperti daging, susu, dan telur. Pengelolaan yang baik membantu menjaga kualitas hasil ternak sekaligus mendukung pendapatan peternak.</p>
+          </div>
+          <p>AgroPeternakan menyajikan informasi dan wawasan seputar praktik peternakan yang lebih efektif. Dengan pengetahuan yang tepat dan pemanfaatan teknologi, peternak dapat mengambil keputusan berdasarkan kondisi ternak dan kebutuhan usaha.</p>
+        </div>
+        <img class="intro-image" src="https://images.unsplash.com/photo-1516467508483-a7212f938fb8?auto=format&fit=crop&w=1000&q=85" alt="Sapi ternak di area peternakan">
+      </div>
+    </section>
+
+    <section class="soft" id="inovasi">
+      <div class="container">
+        <div class="section-head">
+          <h2>Fokus Peternakan</h2>
+          <p>Beberapa hal penting untuk mendukung peternakan yang sehat, produktif, dan berkelanjutan.</p>
+        </div>
+        <div class="features">
+          <article class="feature">
+            <div class="emoji" aria-hidden="true">🐄</div>
+            <h3>Kesehatan Ternak</h3>
+            <p>Pemantauan kondisi hewan, kebersihan kandang, vaksinasi, dan pemeriksaan rutin membantu mencegah penyebaran penyakit.</p>
+          </article>
+          <article class="feature">
+            <div class="emoji" aria-hidden="true">🌾</div>
+            <h3>Pakan Berkualitas</h3>
+            <p>Pemberian pakan bergizi sesuai jenis dan usia ternak mendukung pertumbuhan serta menjaga produktivitas.</p>
+          </article>
+          <article class="feature">
+            <div class="emoji" aria-hidden="true">📱</div>
+            <h3>Teknologi Peternakan</h3>
+            <p>Sensor, pencatatan digital, dan analisis data dapat membantu peternak memantau kebutuhan ternak secara lebih teratur.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="berita">
+      <div class="container">
+        <div class="section-head">
+          <h2>Berita dan Wawasan</h2>
+          <p>Contoh topik informasi yang dapat dikembangkan menjadi artikel AgroPeternakan.</p>
+        </div>
+        <div class="news-grid">
+          <article class="news-card">
+            <img src="https://images.unsplash.com/photo-1524024973431-2ad916746881?auto=format&fit=crop&w=900&q=85" alt="Peternakan sapi">
+            <div class="news-content">
+              <div class="tag">Teknologi</div>
+              <h3>Teknologi Digital Mulai Diterapkan di Peternakan</h3>
+              <p>Peternak mulai memanfaatkan pencatatan digital dan perangkat pemantau untuk mengawasi kesehatan serta perkembangan ternak.</p>
+              <a href="#kontak">Baca selengkapnya →</a>
+            </div>
+          </article>
+          <article class="news-card">
+            <img src="https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?auto=format&fit=crop&w=900&q=85" alt="Ayam di peternakan">
+            <div class="news-content">
+              <div class="tag">Manajemen</div>
+              <h3>Menjaga Kebersihan Kandang untuk Mencegah Penyakit</h3>
+              <p>Kandang yang bersih, sirkulasi udara baik, dan sanitasi teratur menjadi bagian penting dari pemeliharaan ternak.</p>
+              <a href="#kontak">Baca selengkapnya →</a>
+            </div>
+          </article>
+          <article class="news-card">
+            <img src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=900&q=85" alt="Sapi sedang merumput">
+            <div class="news-content">
+              <div class="tag">Pakan</div>
+              <h3>Pakan Seimbang Mendukung Produktivitas Ternak</h3>
+              <p>Pengaturan nutrisi sesuai kebutuhan hewan membantu menjaga pertumbuhan dan kualitas hasil peternakan.</p>
+              <a href="#kontak">Baca selengkapnya →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontak">
+      <div class="container">
+        <div class="callout">
+          <div>
+            <h2>Peternakan Maju, Pangan Berkualitas</h2>
+            <p>Terus belajar dan manfaatkan inovasi untuk membangun sektor peternakan yang lebih baik.</p>
+          </div>
+          <a class="btn" href="#beranda">Kembali ke Atas</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p><strong>AgroPeternakan</strong> — Bagian dari AgriVoice AI</p>
+    <p>Informasi dan inovasi untuk pertanian serta peternakan Indonesia.</p>
+  </footer>
+
+<!-- Tombol dari AgroVoice -->
+<a data-agrovoice-beranda href="../../index.html" style="position:fixed;bottom:20px;left:20px;z-index:2147483647;display:inline-block;padding:11px 18px;background:#2e5c36;color:#fff;font:600 14px/1 system-ui,-apple-system,'Segoe UI',sans-serif;text-decoration:none;border-radius:999px;box-shadow:0 4px 14px rgba(0,0,0,.28);">&larr; Kembali ke beranda</a>
+</body>
+</html>

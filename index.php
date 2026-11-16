@@ -1,0 +1,246 @@
+<?php
+require 'config/database.php';
+$kategori_slug = isset($_GET['kategori']) ? $_GET['kategori'] : '';
+$logo = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect width="24" height="24" rx="7" fill="#2e5c36"/><path d="M12 18V10.500M12 10.500c0-3 2-5 5.500-5.500C17.500 8.500 15.500 10.500 12 10.500ZM12 14c0-2-1.500-3.500-4-3.700.1 2.500 1.700 3.700 4 3.700Z" stroke="#a6d84a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+?>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroVoice - Kabar Pertanian dari Lahan</title>
+    <meta name="description" content="Berita, cerita, dan foto dari petani dan penyuluh di seluruh Indonesia.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.php" class="nav-logo"><?= $logo ?>AgroVoice</a>
+            <div class="nav-links">
+                <a href="index.php" style="color: var(--agro-green); opacity: 1;">Beranda</a>
+                <a href="berita.php">Berita</a>
+                <a href="galeri.php">Galeri</a>
+
+                <?php require_once 'config/nav.php'; render_agro_select($koneksi, $kategori_slug); ?>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- HERO -->
+        <header class="home-hero">
+            <div class="home-wrap">
+                <h1>Kabar pertanian, langsung dari lahan.</h1>
+                <p class="lead">Berita, cerita, dan foto dari petani dan penyuluh di seluruh Indonesia.</p>
+                <div class="home-actions">
+                    <a href="berita.php" class="btn-pill">Baca berita</a>
+                    <a href="galeri.php" class="btn-pill btn-outline">Lihat galeri</a>
+                </div>
+
+                <div id="sorotan"><div class="skel spotlight-skel" style="margin-top:48px; aspect-ratio:21/9; min-height:280px; border-radius:28px;"></div></div>
+            </div>
+        </header>
+
+        <!-- SECTION: KENAPA AGROVOICE -->
+        <section class="home-section about-section">
+            <div class="home-wrap" style="text-align: center; max-width: 800px;">
+                <h2 class="section-title" style="font-size: clamp(24px, 4vw, 36px); margin-bottom: 20px;">Kenapa AgroVoice?</h2>
+                <p style="font-size: 18px; color: var(--text-muted); line-height: 1.8; margin-bottom: 40px;">
+                    Kami percaya bahwa teknologi tidak seharusnya rumit. AgroVoice hadir sebagai jembatan antara inovasi AI tercanggih dengan kearifan lokal para petani Indonesia. Satu platform untuk semua kebutuhan agrikultur Anda.
+                </p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; text-align: left;">
+                    <div style="background: #fff; padding: 30px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.03);">
+                        <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--agro-green);">🌱 Informasi Terpercaya</h3>
+                        <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">Berita dan panduan budidaya yang dikurasi langsung dari lapangan oleh para ahli.</p>
+                    </div>
+                    <div style="background: #fff; padding: 30px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.03);">
+                        <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--agro-green);">🤖 Teknologi AI</h3>
+                        <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">Analisis cerdas untuk membantu Anda mengambil keputusan panen yang lebih baik.</p>
+                    </div>
+                    <div style="background: #fff; padding: 30px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.03);">
+                        <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--agro-green);">🤝 Ekosistem Digital</h3>
+                        <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">Menghubungkan petani, penyuluh, dan pembeli dalam satu wadah yang transparan.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BERITA -->
+        <section class="home-section" id="berita-terbaru">
+            <div class="home-wrap">
+                <div class="home-head">
+                    <h2>Berita terbaru</h2>
+                    <a href="berita.php" class="link-quiet">Semua berita</a>
+                </div>
+                <div class="home-grid" id="daftar-berita">
+                    <div class="skel" style="aspect-ratio:4/3"></div>
+                    <div class="skel" style="aspect-ratio:4/3"></div>
+                    <div class="skel" style="aspect-ratio:4/3"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GALERI -->
+        <section class="home-section tint" id="galeri">
+            <div class="home-wrap">
+                <div class="home-head">
+                    <h2>Galeri</h2>
+                    <a href="galeri.php" class="link-quiet">Semua galeri</a>
+                </div>
+                <div class="home-gallery" id="daftar-galeri">
+                    <div class="skel" style="aspect-ratio:4/5"></div>
+                    <div class="skel" style="aspect-ratio:4/5"></div>
+                    <div class="skel" style="aspect-ratio:4/5"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================= -->
+        <!-- SECTION: LOKASI KAMI (BARU) -->
+        <!-- ========================================= -->
+        <section class="home-section white" id="lokasi" style="padding-bottom: 80px;">
+            <div class="home-wrap">
+                <div class="home-head" style="justify-content: center; text-align: center; display: block; margin-bottom: 50px;">
+                    <h2 style="font-size: clamp(24px, 4vw, 36px);">Kunjungi Kami</h2>
+                    <p style="font-size: 16px; color: var(--text-muted); margin-top: 10px;">Basis operasional AgroVoice di Indonesia.</p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: center;">
+                    
+                    <!-- Info Alamat -->
+                    <div style="padding: 20px;">
+                        <div style="margin-bottom: 30px;">
+                            <h3 style="font-size: 18px; color: var(--agro-green); margin-bottom: 8px;">📍 Kantor Pusat</h3>
+                            <p style="font-size: 16px; line-height: 1.6; color: var(--text-dark);">
+                                Jl. Pertanian Raya No. 123,<br>
+                                Kecamatan Sukamaju, Kota Bandung,<br>
+                                Jawa Barat 40123, Indonesia
+                            </p>
+                        </div>
+
+                        <div style="margin-bottom: 30px;">
+                            <h3 style="font-size: 18px; color: var(--agro-green); margin-bottom: 8px;">📞 Kontak</h3>
+                            <p style="font-size: 16px; line-height: 1.6; color: var(--text-dark);">
+                                WhatsApp: +62 812-3456-7890<br>
+                                Email: halo@agrovoice.id
+                            </p>
+                        </div>
+
+                        <div>
+                            <h3 style="font-size: 18px; color: var(--agro-green); margin-bottom: 8px;">⏰ Jam Operasional</h3>
+                            <p style="font-size: 16px; line-height: 1.6; color: var(--text-dark);">
+                                Senin - Jumat: 08.00 - 17.00 WIB<br>
+                                Sabtu: 08.00 - 12.00 WIB
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Peta Google Maps -->
+                    <div style="border-radius: 24px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid var(--line); height: 100%; min-height: 350px;">
+                        <!-- Ganti URL src dengan link embed Google Maps lokasi asli kamu -->
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126748.56347862248!2d107.57311691831642!3d-6.903444341687889!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e6398252477f%3A0x146a1f93d3e815b2!2sBandung%2C%20Bandung%20City%2C%20West%20Java!5e0!3m2!1sen!2sid!4v1690000000000!5m2!1sen!2sid" 
+                            width="100%" height="100%" style="border:0; min-height: 350px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="home-footer">
+        <div class="home-wrap">
+            <span>&copy; 2026 AgroVoice AI</span>
+            <nav aria-label="Tautan footer">
+                <a href="index.php">Beranda</a>
+                <a href="berita.php">Berita</a>
+                <a href="galeri.php">Galeri</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+        const kategoriSlug = <?= json_encode($kategori_slug) ?>;
+        const ikonDaun = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20v-9M12 11c0-4 2.500-6.500 7-7 0 4.500-2.500 7-7 7ZM12 15c0-2.500-1.800-4.300-5-4.700.2 3 2.100 4.700 5 4.700Z"/></svg>';
+
+        const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+        const fmtTanggal = t => { const d = new Date(String(t).replace(' ', 'T')); return isNaN(d) ? '' : d.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }); };
+        const urlGambar = f => f ? 'uploads/' + encodeURIComponent(f) : '';
+
+        async function muatBerita() {
+            const sorotan = document.getElementById('sorotan');
+            const daftar = document.getElementById('daftar-berita');
+            try {
+                const url = 'api_berita.php' + (kategoriSlug ? '?kategori=' + encodeURIComponent(kategoriSlug) : '');
+                const data = await (await fetch(url)).json();
+
+                if (!Array.isArray(data) || data.length === 0) {
+                    sorotan.innerHTML = '';
+                    daftar.innerHTML = '<p class="home-empty">Belum ada berita. Berita yang ditambahkan lewat panel admin akan muncul di sini.</p>';
+                    return;
+                }
+
+                let daftarTampil = data.slice(0, 3);
+                if (data.length >= 2) {
+                    const idxSorot = Math.max(0, data.findIndex(b => b.gambar));
+                    const s = data[idxSorot];
+                    sorotan.innerHTML = `
+                        <a href="berita_detail.php?id=${s.id}" class="spotlight">
+                            ${s.gambar ? `<img src="${urlGambar(s.gambar)}" alt="">` : ''}
+                            <div class="spotlight-body">
+                                <span class="chip">${esc(s.kategori_nama || 'Umum')}</span>
+                                <h2>${esc(s.judul)}</h2>
+                                <p>${esc(s.ringkasan)}</p>
+                            </div>
+                        </a>`;
+                    daftarTampil = data.filter((_, i) => i !== idxSorot).slice(0, 3);
+                } else {
+                    sorotan.innerHTML = '';
+                }
+
+                daftar.innerHTML = daftarTampil.map(b => `
+                    <a href="berita_detail.php?id=${b.id}" class="home-card">
+                        <div class="thumb ${b.gambar ? '' : 'empty'}">${b.gambar ? `<img src="${urlGambar(b.gambar)}" alt="" loading="lazy">` : ikonDaun}</div>
+                        <div class="meta"><b>${esc(b.kategori_nama || 'Umum')}</b> &middot; ${esc(fmtTanggal(b.tanggal))}</div>
+                        <h3>${esc(b.judul)}</h3>
+                        <p>${esc(b.ringkasan)}</p>
+                    </a>`).join('');
+            } catch (e) {
+                console.error('Gagal memuat berita:', e);
+                sorotan.innerHTML = '';
+                daftar.innerHTML = '<p class="home-empty">Berita belum bisa dimuat. Muat ulang halaman ini sebentar lagi.</p>';
+            }
+        }
+
+        async function muatGaleri() {
+            const box = document.getElementById('daftar-galeri');
+            try {
+                const data = await (await fetch('api_galeri.php')).json();
+                if (!Array.isArray(data) || data.length === 0) {
+                    box.innerHTML = '<p class="home-empty">Belum ada foto atau video. Unggah lewat panel admin untuk menampilkannya di sini.</p>';
+                    return;
+                }
+                box.innerHTML = data.slice(0, 3).map(item => `
+                    <figure>
+                        <div class="frame">${item.tipe === 'foto'
+                            ? `<img src="${esc(item.url_file)}" alt="${esc(item.judul)}" loading="lazy">`
+                            : `<video src="${esc(item.url_file)}" controls preload="metadata"></video>`}</div>
+                        <figcaption>${esc(item.judul || 'Tanpa judul')}</figcaption>
+                    </figure>`).join('');
+            } catch (e) {
+                console.error('Gagal memuat galeri:', e);
+                box.innerHTML = '<p class="home-empty">Galeri belum bisa dimuat. Muat ulang halaman ini sebentar lagi.</p>';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => { muatBerita(); muatGaleri(); });
+    </script>
+</body>
+</html>
